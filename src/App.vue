@@ -6,10 +6,10 @@
     <div id="nav" v-if="this.$store.state.isUserAuthorized">
       <router-link to="/">About you</router-link> |
       <router-link to="/search">Search</router-link> |
-      <router-link to="/favourite">Favourite</router-link>
+      <router-link to="/favourites">Favourites</router-link>
     </div>
 
-    <keep-alive include="Search,Favourite">
+    <keep-alive include="Search,Favourites">
       <router-view v-if="this.$store.state.isUserAuthorized"/>
     </keep-alive>
   </div>
