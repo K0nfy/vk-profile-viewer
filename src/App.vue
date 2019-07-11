@@ -17,7 +17,7 @@
 
 <script>
 // @ is an alias to /src
-import Authorization from '@/components/Authorization.vue'
+import Authorization from '@/components/Authorization.vue';
 
 export default {
   components: {
@@ -30,7 +30,7 @@ export default {
 #app
   max-width: 1140px
   margin: auto
-  padding: 30px 0
+  padding: 30px 25px
   font-family: Arial, sans-serif
   text-align: center
 

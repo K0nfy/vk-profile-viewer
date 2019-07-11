@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'Authorization',
+  name: 'VKauthorization',
   data: function() {
     return {
       isVKloaded: false,
@@ -41,7 +41,7 @@ export default {
         
         if (response.session) {
           this.$store.commit('changeAuthState', true);
-          this.$store.commit('setUserId', response.session.user.id);
+          this.$store.commit('setCurrentUserId', response.session.user.id);
         }
       });
     }
