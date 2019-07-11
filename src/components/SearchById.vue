@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: 'VKsearchById',
+  name: 'SearchById',
   data() {
     return {
       sugsLinks: [],

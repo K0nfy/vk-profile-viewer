@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'VKauthorization',
+  name: 'Authorization',
   data: function() {
     return {
       isVKloaded: false,

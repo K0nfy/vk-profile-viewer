@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'VKsearchByName',
+  name: 'SearchByName',
   data() {
     return {
       inputUserName: null

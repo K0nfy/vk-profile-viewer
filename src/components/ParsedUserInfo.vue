@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'VKparsedUserInfo',
+  name: 'ParsedUserInfo',
   props: {
     parsedUserInfoObj: Object
   }

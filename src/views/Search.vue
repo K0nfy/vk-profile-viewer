@@ -2,12 +2,12 @@
 <div>
   <el-row :gutter="20" type="flex" justify="center">
     <el-col :span="9">
-      <VKsearchById></VKsearchById>
-      <VKparsedUserInfo v-if="Object.keys(userFoundByIdInfo).length" :parsed-user-info-obj="userFoundByIdInfo"/>
+      <SearchById></SearchById>
+      <ParsedUserInfo v-if="Object.keys(userFoundByIdInfo).length" :parsed-user-info-obj="userFoundByIdInfo"/>
     </el-col>
     <el-col :span="9">
-      <VKsearchByName></VKsearchByName>
-      <VKparsedUserInfo v-if="Object.keys(userFoundByNameInfo).length" :parsed-user-info-obj="userFoundByNameInfo"/>
+      <SearchByName></SearchByName>
+      <ParsedUserInfo v-if="Object.keys(userFoundByNameInfo).length" :parsed-user-info-obj="userFoundByNameInfo"/>
     </el-col>
   </el-row>
 </div>
@@ -15,15 +15,15 @@
 
 <script>
 // @ is an alias to /src
-import VKsearchById from '@/components/VKsearchById.vue';
-import VKsearchByName from '@/components/VKsearchByName.vue';
-import VKparsedUserInfo from '@/components/VKparsedUserInfo.vue';
+import SearchById from '@/components/SearchById.vue';
+import SearchByName from '@/components/SearchByName.vue';
+import ParsedUserInfo from '@/components/ParsedUserInfo.vue';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'Search',
   components: {
-    VKsearchById, VKsearchByName, VKparsedUserInfo
+    SearchById, SearchByName, ParsedUserInfo
   },
   computed: {
     ...mapGetters({
