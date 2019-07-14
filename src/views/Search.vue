@@ -1,13 +1,25 @@
 <template>
 <div>
-  <el-row :gutter="20" type="flex" justify="center">
-    <el-col :span="9">
-      <SearchById></SearchById>
-      <ParsedUserInfo v-if="Object.keys(userFoundByIdInfo).length" :parsed-user-info-obj="userFoundByIdInfo"/>
+  <el-row type="flex" justify="space-around">
+    <el-col :span="8">
+      <InputById @inputReceived="(input) => this.$router.push({ name: 'Search', query: { id: input } })"/>
+      <UserInfoParser :expanded="true" :q-user-id="routeId" @rUserIdReceived="(userId) => rUserId = userId">
+        <template v-slot:fav-btn-slot>
+          <el-col :span="6">
+            <AdderToFavourites :user-id="rUserId"/>
+          </el-col>
+        </template>
+      </UserInfoParser>
     </el-col>
-    <el-col :span="9">
-      <SearchByName></SearchByName>
-      <ParsedUserInfo v-if="Object.keys(userFoundByNameInfo).length" :parsed-user-info-obj="userFoundByNameInfo"/>
+    <el-col :span="8">
+      <InputByName @inputReceived="(input) => this.$router.push({ name: 'Search', query: { name: input } })"/>
+      <UserInfoParser :expanded="true" :q-user-name="routeName" @rUserIdReceived="(userId) => rUserId = userId">
+        <template v-slot:fav-btn-slot>
+          <el-col :span="6">
+            <AdderToFavourites v-if="rUserId" :user-id="rUserId"/>
+          </el-col>
+        </template>
+      </UserInfoParser>
     </el-col>
   </el-row>
 </div>
@@ -15,21 +27,24 @@
 
 <script>
 // @ is an alias to /src
-import SearchById from '@/components/SearchById.vue';
-import SearchByName from '@/components/SearchByName.vue';
-import ParsedUserInfo from '@/components/ParsedUserInfo.vue';
-import { mapGetters } from 'vuex';
+import InputById from '@/components/InputById.vue';
+import InputByName from '@/components/InputByName.vue';
+import UserInfoParser from '@/components/UserInfoParser.vue';
+import AdderToFavourites from '@/components/AdderToFavourites.vue';
 
 export default {
   name: 'Search',
-  components: {
-    SearchById, SearchByName, ParsedUserInfo
+  props: {
+    routeId: String,
+    routeName: String
   },
-  computed: {
-    ...mapGetters({
-      userFoundByIdInfo: 'getUserFoundByIdInfo',
-      userFoundByNameInfo: 'getUserFoundByNameInfo'
-    })
+  data() {
+    return {
+      rUserId: null
+    }
+  },
+  components: {
+    InputById, InputByName, UserInfoParser, AdderToFavourites
   }
 }
 </script>

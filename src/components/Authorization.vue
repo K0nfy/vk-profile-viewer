@@ -41,7 +41,7 @@ export default {
         
         if (response.session) {
           this.$store.commit('changeAuthState', true);
-          this.$store.commit('setCurrentUserId', response.session.user.id);
+          this.$store.commit('setCurrentUserId', response.session.user.id.toString());
         }
       });
     }

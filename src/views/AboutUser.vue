@@ -1,29 +1,37 @@
 <template>
 <div>
-  <SearchById :user-id="this.$store.state.currentUserId">
-    <div slot="input-slot" style="display: none"></div>
-  </SearchById>
-  <ParsedUserInfo v-if="Object.keys(currentUserInfo).length" :parsed-user-info-obj="currentUserInfo"/>
+  <el-row type="flex" justify="center">
+    <el-col :span="8">
+      <UserInfoParser :expanded="true" :q-user-id="currentUserId">
+        <template v-slot:fav-btn-slot>
+          <div style="display: none"/>
+        </template>
+        <template v-slot:expand-btn-slot>
+          <div style="display: none"/>
+        </template>
+      </UserInfoParser>
+    </el-col>
+  </el-row>
 </div>
 </template>
 
 <script>
-  // @ is an alias to /src
-  import SearchById from '@/components/SearchById.vue';
-  import ParsedUserInfo from '@/components/ParsedUserInfo.vue';
-  import { mapGetters } from 'vuex';
+// @ is an alias to /src
+import InputById from '@/components/InputById.vue';
+import UserInfoParser from '@/components/UserInfoParser.vue';
+import { mapGetters } from 'vuex';
 
-  export default {
-    name: 'AboutUser',
-    components: {
-      SearchById, ParsedUserInfo
-    },
-    computed: {
-      ...mapGetters({
-        currentUserInfo: 'getCurrentUserInfo'
-      })
-    }
+export default {
+  name: 'AboutUser',
+  components: {
+    InputById, UserInfoParser
+  },
+  computed: {
+    ...mapGetters({
+      currentUserId: 'getCurrentUserId'
+    })
   }
+}
 </script>
 
 <style scoped lang="sass">
